@@ -20,6 +20,11 @@
 
 O Anime Library é uma aplicação de catálogo de animes. Na página incial é possível visualizar a lista de animes disponíveis e seus detalhes, como título, ano de lançamento e avaliação. A aplicação possui ainda uma página ond é possível visualizar mais detalhes do anime selecionado na página inicial. É possível vê inform a sinopse, categorias, trailer (caso esteja disponível) e a lista dos epsódios.
 
+## Demo
+
+Vercel: https://anime-library.vercel.app/ </br>
+Heroku: https://anime-library-js.herokuapp.com/
+
 <p align="center">
   <img alt="dashgo." src=".github/anime-library.gif" width="100%">
 </p>
