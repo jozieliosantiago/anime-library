@@ -1,0 +1,52 @@
+.episodeDetails {
+  display: flex;
+  margin-top: 25px;
+  padding-bottom: 25px;
+  border-bottom: solid 1px #555;
+
+  img {
+    height: 8rem;
+    border-radius: 2px;
+  }
+
+  .episodeDescription {
+    padding-left: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .head {
+      h4 {
+        color: var(--white);
+        font-weight: bold;
+        margin: 0;
+      }
+
+      small {
+        filter: brightness(70%);
+      }
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .episodeDetails {
+    flex-direction: column;
+
+    img {
+      height: 25vh;
+    }
+
+    .episodeDescription {
+      padding: 10px 0;
+
+      .head {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}

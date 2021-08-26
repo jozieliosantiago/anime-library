@@ -1,0 +1,19 @@
+.headerContainer {
+  height: 6rem;
+  border-bottom: solid 1px var(--gray-800);
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  max-width: 1120px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.appName {
+  color: var(--white);
+  margin: 0;
+  cursor: pointer;
+}

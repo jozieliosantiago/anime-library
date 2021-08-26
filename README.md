@@ -1,34 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
+  Anime Library
+</h1>
 
-## Getting Started
+<p align="center">
+  <a href="#dashgo">Anime Library</a> |
+  <a href="#tecnologias">Tecnologias</a> |
+  <a href="#estrutura">Estrutura</a> |
+  <a href="#execução">Execução</a> |
+  <a href="#licença">Licença</a>
+</p>
 
-First, run the development server:
+<p align="center">
+  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=1374ef&labelColor=000000">
+
+  <img src="https://img.shields.io/static/v1?label=ignite&message=React.js&color=1374ef&labelColor=000000" alt="Ignite ReactJS" />
+</p>
+
+# Anime Library
+
+O Anime Library é uma aplicação de catálogo de animes. Na página incial é possível visualizar a lista de animes disponíveis e seus detalhes, como título, ano de lançamento e avaliação. A aplicação possui ainda uma página ond é possível visualizar mais detalhes do anime selecionado na página inicial. É possível vê inform a sinopse, categorias, trailer (caso esteja disponível) e a lista dos epsódios.
+
+<p align="center">
+  <img alt="dashgo." src=".github/anime-library.gif" width="100%">
+</p>
+
+## Tecnologias
+
+Esse projeto foi desenvolvido utilizando as seguintes tecnologias:
+
+- ReactJS
+- TypeScript
+- NextJS
+- Ant Design
+- SASS
+
+## Estrutura
+
+O projeto possui a seguinte estrutura de pastas
+
+- <strong>src</strong>: diretótio com as pastas que compõe o projeto;
+- <strong>components</strong>: Componentes da aplicação utilizado nas páginas;
+- <strong>pages</strong>: Páginas da aplicação;
+- <strong>services</strong>: Configuração de serviços utilizados pela aplicação;
+- <strong>styles</strong>: Estilos globais e da página home;
+
+## Execução
+
+A aplicação utiliza a API https://kitsu.docs.apiary.io/ para obter as informações mostradas nas páginas. Dessa forma é necessário criar, na raiz do projeto, um arquivo com nome <i>.env.local</i>. Dentro desse arquivo adicione a variável de ambiente <strong>BASENAME_URL=https://kitsu.io/api/edge</strong>.
+
+#### No terminal, dentro da pasta do projeto, execute os comandos:
+
+<i>\*Instalar dependências do projeto</i>
 
 ```bash
-npm run dev
-# or
+yarn
+```
+
+<i>\*Rodar a aplicação</i>
+
+```bash
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Licença
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](.github/LICENSE.md) para mais detalhes.

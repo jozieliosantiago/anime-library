@@ -1,0 +1,115 @@
+.homeContainer {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.headerHome {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 20rem;
+  border-radius: 5px;
+
+  h2 {
+    color: var(--white);
+  }
+
+  img {
+    filter: brightness(50%);
+    width: 100%;
+  }
+
+  .featuredAnime {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    bottom: 50px;
+    left: 15px;
+
+    .mostWatchedTitle {
+      color: var(--white);
+      font-weight: bold;
+      margin: 0;
+      font-size: 40px;
+    }
+
+    a {
+      margin-top: 10px;
+      background: var(--gray-800);
+      border: none;
+      border-radius: 2px;
+      font-size: 16px;
+      color: var(--white);
+      padding: 5px 10px;
+    }
+  }
+}
+
+.animeContainer {
+  h2 {
+    margin: 25px 0;
+    color: var(--white);
+  }
+
+  .animeContent {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .headerHome {
+    height: 16rem;
+  }
+
+  .animeContainer {
+    .animeContent {
+      grid-template-columns: repeat(2, 50%);
+    }
+  }
+}
+
+@media (max-width: 665px) {
+  .headerHome {
+    height: 14rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .headerHome {
+    height: 18rem;
+
+    img {
+      width: auto;
+      height: 30vh;
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .headerHome {
+    height: 20rem;
+
+    img {
+      width: auto;
+      height: 40vh;
+    }
+
+    .featuredAnime {
+      bottom: 20px;
+    }
+  }
+
+  .animeContainer {
+    .animeContent {
+      grid-template-columns: 1fr;
+    }
+  }
+}

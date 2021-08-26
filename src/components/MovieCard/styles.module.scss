@@ -1,0 +1,60 @@
+.animeCard {
+  padding: 10px;
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  cursor: pointer;
+
+  .post {
+    position: relative;
+
+    img {
+      width: 100%;
+      transition: filter 0.2s;
+
+      &:hover {
+        filter: brightness(60%);
+      }
+    }
+
+    span {
+      position: absolute;
+      left: 0;
+    }
+  }
+
+  .animeInfo {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+    justify-content: space-between;
+
+    .animeTitle {
+      h4,
+      span {
+        color: var(--white);
+        margin: 0;
+      }
+
+      h4 {
+        width: 100%;
+        margin: 5px 0;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      span {
+        border: solid 1px;
+        padding: 2px 4px;
+        border-radius: 2px;
+        display: inline-block;
+        margin: 5px 0;
+        font-size: 0.7rem;
+      }
+    }
+  }
+}
