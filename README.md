@@ -26,7 +26,7 @@ Vercel: https://anime-library.vercel.app/ </br>
 Heroku: https://anime-library-js.herokuapp.com/
 
 <p align="center">
-  <img alt="dashgo." src=".github/anime-library.gif" width="100%">
+  <img alt="dashgo." src=".github/anime-library-1.gif" width="100%">
 </p>
 
 ## Tecnologias
