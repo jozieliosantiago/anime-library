@@ -1,6 +1,14 @@
 interface PosterImage {
   large: string;
   medium: string;
+  meta: {
+    dimensions: {
+      large: {
+        width: number;
+        height: number;
+      };
+    };
+  };
 }
 
 interface CoverImage {

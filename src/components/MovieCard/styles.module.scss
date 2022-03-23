@@ -8,14 +8,24 @@
 
   .post {
     position: relative;
+    overflow: hidden;
+    border-right: solid 2px #fff0 !important;
+    border-left: solid 2px #fff0 !important;
+    border-radius: 10px;
+    transition: 0.3s;
 
     img {
-      width: 100%;
-      transition: filter 0.2s;
+      transition: 0.3s;
 
       &:hover {
-        filter: brightness(60%);
+        position: absolute !important;
+        padding: 8px !important;
+        filter: brightness(60%) blur(2px) !important;
       }
+    }
+
+    &:hover {
+      border-image: linear-gradient(to bottom, #d80404, rgba(0, 0, 0, 0)) 1 100% !important;
     }
 
     span {
@@ -29,7 +39,6 @@
     flex: 1;
     flex-direction: column;
     position: relative;
-    height: 100%;
     justify-content: space-between;
 
     .animeTitle {
