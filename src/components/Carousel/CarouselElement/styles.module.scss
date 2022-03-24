@@ -1,0 +1,38 @@
+@keyframes fadeToRight {
+  from {
+    transform: translateX(0%) scale(100%);
+  }
+  50% {
+    transform: translateX(-1%) scale(103%);
+  }
+  to {
+    transform: translateX(0%) scale(100%);
+  }
+}
+
+.carouselElement {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+
+  img {
+    animation: fadeToRight 40s infinite;
+  }
+}
+
+.darkCover {
+  position: absolute;
+  background-image: linear-gradient(
+    to right,
+    #000,
+    rgba(0, 0, 0, 0.83),
+    rgba(0, 0, 0, 0.508),
+    rgba(0, 0, 0, 0.138),
+    rgba(0, 0, 0, 0.508),
+    rgba(0, 0, 0, 0.83),
+    #000
+  );
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}

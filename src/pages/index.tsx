@@ -1,9 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
-
-import axios from 'axios';
 
 import { ktisuApi } from '../services/kitsuApi';
 
@@ -11,24 +8,48 @@ import styles from '../styles/home.module.scss';
 import { MovieCard } from '../components/MovieCard';
 
 import { Anime, GetAnimeResponse } from '../types';
-import { AverageRating } from '../components/AverageRating';
+import { Loading } from '../components/Loading';
+import { Carousel } from '../components/Carousel';
 
 interface HomeProps {
   animes: GetAnimeResponse;
+  trending: Anime[];
 }
 
-export default function Home({ animes }: HomeProps) {
-  const [mostWatched, setMostWatched] = useState<Anime>({} as Anime);
+export default function Home({ animes, trending }: HomeProps) {
+  const { data } = animes;
+  const [animeList, setAnimeList] = useState(data);
+  const [loading, setLoading] = useState(false);
+  const [offset, setOffset] = useState(0);
 
   useEffect(() => {
-    async function getMostWatched() {
-      const { data } = await axios.get('https://kitsu.io/api/edge/anime/11');
-      const { data: animeData } = data;
-      setMostWatched(animeData);
-    }
+    setOffset(animeList.length);
+  }, [animeList]);
 
-    getMostWatched();
-  }, []);
+  const loadMore = useCallback(async () => {
+    setLoading(true);
+
+    try {
+      const { data: responseData } = await ktisuApi.get<GetAnimeResponse>(
+        `/anime?page[limit]=20&page[offset]=${offset}`
+      );
+      setAnimeList((currentList) => [...currentList, ...responseData.data]);
+
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
+  }, [offset]);
+
+  useEffect(() => {
+    window.onscroll = () => {
+      const { scrollTop, scrollHeight, clientHeight } =
+        document.documentElement;
+      if (scrollTop + clientHeight >= scrollHeight - 5) {
+        if (!loading) loadMore();
+      }
+    };
+  }, [loadMore, loading]);
 
   return (
     <>
@@ -36,38 +57,15 @@ export default function Home({ animes }: HomeProps) {
         <title>Anime Library</title>
       </Head>
 
+      <Carousel carouselElements={trending} />
+
       <main className={styles.homeContainer}>
-        <div className={styles.headerHome}>
-          <h2>Most Watched</h2>
-
-          <img
-            src={mostWatched.attributes?.coverImage.large}
-            alt={mostWatched.attributes?.canonicalTitle}
-          />
-
-          <div className={styles.featuredAnime}>
-            <h1 className={styles.mostWatchedTitle}>
-              {mostWatched.attributes?.canonicalTitle}
-            </h1>
-
-            <div>
-              <AverageRating
-                averageRating={mostWatched.attributes?.averageRating}
-              />
-            </div>
-
-            <Link href={`/anime/11`}>
-              <a>More</a>
-            </Link>
-          </div>
-        </div>
-
         <div className={styles.animeContainer}>
           <h2>Animes</h2>
 
           <div className={styles.animeContent}>
-            {animes.data.length &&
-              animes.data.map((anime) => (
+            {animeList.length &&
+              animeList.map((anime) => (
                 <MovieCard
                   id={anime.id}
                   key={anime.id}
@@ -75,6 +73,8 @@ export default function Home({ animes }: HomeProps) {
                 />
               ))}
           </div>
+
+          {loading && <Loading />}
         </div>
       </main>
     </>
@@ -86,47 +86,11 @@ export const getServerSideProps: GetServerSideProps = async () => {
     `/anime?page[limit]=20&page[offset]=0`
   );
 
-  const { data: animeList } = data;
-  const formattedData = animeList.map((anime) => {
-    const {
-      id,
-      attributes: {
-        canonicalTitle,
-        startDate,
-        averageRating,
-        synopsis,
-        description,
-        ageRatingGuide,
-        posterImage,
-        coverImage,
-        episodeCount,
-        youtubeVideoId,
-      },
-    } = anime;
-
-    return {
-      id,
-      attributes: {
-        canonicalTitle,
-        startDate,
-        averageRating,
-        synopsis,
-        description,
-        ageRatingGuide,
-        posterImage,
-        coverImage,
-        episodeCount,
-        youtubeVideoId,
-      },
-    };
-  });
-
-  const animes = {
-    ...data,
-    data: formattedData,
-  };
+  const {
+    data: { data: trending },
+  } = await ktisuApi.get<GetAnimeResponse>('trending/anime');
 
   return {
-    props: { animes },
+    props: { animes: data, trending },
   };
 };

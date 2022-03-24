@@ -1,0 +1,12 @@
+.loading {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+
+  svg {
+    font-size: 30px;
+    color: #d80404;
+  }
+}

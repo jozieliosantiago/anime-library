@@ -41,8 +41,8 @@ export function MovieCard({ attributes, id }: MovieCardProps) {
             onMouseLeave={() => setShowSummary(false)}
           >
             <Image
-              width={largeMeta.width}
-              height={largeMeta.height}
+              width={largeMeta.width || 550}
+              height={largeMeta.height || 780}
               loading="eager"
               src={large}
               alt={canonicalTitle}

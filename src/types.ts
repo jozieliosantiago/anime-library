@@ -13,6 +13,14 @@ interface PosterImage {
 
 interface CoverImage {
   large: string;
+  meta: {
+    dimensions: {
+      large: {
+        height: number;
+        width: number;
+      };
+    };
+  };
 }
 
 interface Relationships {
@@ -41,6 +49,8 @@ export interface AnimeAttributes {
   coverImage: CoverImage;
   episodeCount: number;
   youtubeVideoId: string;
+  createdAt: string;
+  showType: string;
 }
 
 export interface Anime {
@@ -71,4 +81,9 @@ export interface Episode {
 export interface Episodes {
   data: Episode[];
   links: PaginationLinks;
+}
+
+export interface IAgeRating {
+  rateClass: 'age10' | 'age12' | 'age14' | 'age16' | 'age18' | 'all';
+  rateValue: string;
 }
